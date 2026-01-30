@@ -121,31 +121,78 @@
   const startTime = Date.now();
 
   function submitData() {
+    const timeSpentSec = Math.floor((Date.now() - startTime) / 1000);
 
-    if (typeof window.localStorage === "undefined") {
-      alert("Storage not supported in this browser.");
-      return;
+    const answers = {};
+    document.querySelectorAll("input[type=radio]:checked").forEach(r => {
+      answers[r.name] = r.value;
+    });
+
+    const q7 = document.getElementById("q7").value.trim();
+    const q8 = document.getElementById("q8").value.trim();
+
+    // ---- PRAJMAN RULE ENGINE v1 ----
+
+    let prajmanMessage = "";
+
+    // Rule A: Foundational Gap
+    if (answers.q1 !== "3" || answers.q2 !== "runtime") {
+      prajmanMessage = `
+        <h3>Prajman</h3>
+        <p><strong>Observation</strong><br>
+        Some of the basic questions took extra effort or led to confusion.</p>
+        <p><strong>What this means</strong><br>
+        This usually happens when fundamentals haven’t fully settled yet — it’s normal and fixable.</p>
+        <p><strong>Next step</strong><br>
+        Start with one focused practice on array indexing and boundaries.
+        Just 10 minutes is enough for now.</p>
+      `;
     }
 
-    const data = {
-      q7: document.getElementById("q7").value,
-      q8: document.getElementById("q8").value,
-      timeSpentSec: Math.floor((Date.now() - startTime) / 1000),
-      timestamp: new Date().toISOString()
-    };
+    // Rule B: Overconfidence
+    else if (timeSpentSec < 180 && Object.keys(answers).length < 5) {
+      prajmanMessage = `
+        <h3>Prajman</h3>
+        <p><strong>Observation</strong><br>
+        You moved quickly, but a few small details were missed.</p>
+        <p><strong>What this means</strong><br>
+        Speed works best when basics are automatic.</p>
+        <p><strong>Next step</strong><br>
+        Slow down briefly and practice one boundary-based array example.</p>
+      `;
+    }
 
-    const radios = document.querySelectorAll("input[type=radio]:checked");
-    radios.forEach(r => data[r.name] = r.value);
+    // Rule C: Hesitation / Avoidance
+    else if (timeSpentSec > 600 || (q7 === "" && q8 === "")) {
+      prajmanMessage = `
+        <h3>Prajman</h3>
+        <p><strong>Observation</strong><br>
+        Some questions were left open or avoided.</p>
+        <p><strong>What this means</strong><br>
+        This usually signals uncertainty, not inability.</p>
+        <p><strong>Next step</strong><br>
+        Try explaining array logic in plain words using one small example.</p>
+      `;
+    }
 
-    let responses = JSON.parse(window.localStorage.getItem("edutwain_scanner")) || [];
-    responses.push(data);
-    window.localStorage.setItem("edutwain_scanner", JSON.stringify(responses));
+    // Default fallback
+    else {
+      prajmanMessage = `
+        <h3>Prajman</h3>
+        <p><strong>Observation</strong><br>
+        Your responses show steady engagement.</p>
+        <p><strong>Next step</strong><br>
+        Continue with one short array practice to strengthen consistency.</p>
+      `;
+    }
 
-    alert("Response saved successfully.");
+    document.querySelector(".container").innerHTML = prajmanMessage;
   }
 </script>
 
+
 </body>
 </html>
+
 
 
