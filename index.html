@@ -10,19 +10,33 @@
       padding: 20px;
     }
     .container {
-      max-width: 800px;
-      background: #fff;
+      max-width: 900px;
+      background: #ffffff;
       margin: auto;
       padding: 30px;
       border-radius: 8px;
     }
-    h2 { margin-top: 35px; }
-    textarea { width: 100%; }
+    h1 {
+      text-align: center;
+    }
+    h2 {
+      margin-top: 35px;
+    }
+    textarea {
+      width: 100%;
+      font-size: 14px;
+    }
     button {
       margin-top: 30px;
       padding: 12px 24px;
       font-size: 16px;
       cursor: pointer;
+    }
+    #prajman-output {
+      margin-top: 40px;
+      padding: 20px;
+      border-left: 4px solid #333;
+      background: #fafafa;
     }
   </style>
 </head>
@@ -30,89 +44,94 @@
 
 <div class="container">
   <h1>EduTwain – Skill Scanner</h1>
-  <p>No grading. No judgment. Just understanding how you think.</p>
+  <p style="text-align:center;">
+    No grading. No judgment. Just understanding how you think.
+  </p>
 
   <!-- Q1 -->
   <h2>Q1</h2>
-  <p>
-    <code>int arr[] = {1,2,3,4}; print(arr[2]);</code><br>
-    What will be printed?
-  </p>
-  <input type="radio" name="q1" value="1">1<br>
-  <input type="radio" name="q1" value="2">2<br>
-  <input type="radio" name="q1" value="3">3<br>
-  <input type="radio" name="q1" value="4">4<br>
+  <p><code>int arr[] = {1,2,3,4}; print(arr[2]);</code><br>What will be printed?</p>
+  <input type="radio" name="q1" value="1"> 1<br>
+  <input type="radio" name="q1" value="2"> 2<br>
+  <input type="radio" name="q1" value="3"> 3<br>
+  <input type="radio" name="q1" value="4"> 4<br>
 
   <!-- Q2 -->
   <h2>Q2</h2>
-  <p>What happens if you access <code>arr[4]</code> in the same array?</p>
-  <input type="radio" name="q2" value="prints">Prints a value<br>
-  <input type="radio" name="q2" value="zero">Prints 0<br>
-  <input type="radio" name="q2" value="compile">Compile-time error<br>
-  <input type="radio" name="q2" value="runtime">Runtime error<br>
+  <p>What happens if you access <code>arr[4]</code>?</p>
+  <input type="radio" name="q2" value="prints"> It prints a value<br>
+  <input type="radio" name="q2" value="zero"> It prints 0<br>
+  <input type="radio" name="q2" value="compile"> Compile-time error<br>
+  <input type="radio" name="q2" value="runtime"> Runtime error<br>
 
   <!-- Q3 -->
   <h2>Q3</h2>
   <p>Which operation is generally fastest on an array?</p>
-  <input type="radio" name="q3" value="index">Access by index<br>
-  <input type="radio" name="q3" value="search">Search an element<br>
-  <input type="radio" name="q3" value="insert">Insert in middle<br>
-  <input type="radio" name="q3" value="remove">Remove from beginning<br>
+  <input type="radio" name="q3" value="index"> Access by index<br>
+  <input type="radio" name="q3" value="search"> Search for an element<br>
+  <input type="radio" name="q3" value="insert"> Insert in the middle<br>
+  <input type="radio" name="q3" value="remove"> Remove from the beginning<br>
 
   <!-- Q4 -->
   <h2>Q4</h2>
   <p>If an array is modified inside a function, what happens?</p>
-  <input type="radio" name="q4" value="changes">Original array changes<br>
-  <input type="radio" name="q4" value="copy">Only copy changes<br>
-  <input type="radio" name="q4" value="size">Depends on size<br>
-  <input type="radio" name="q4" value="error">Gives error<br>
+  <input type="radio" name="q4" value="changes"> Original array changes<br>
+  <input type="radio" name="q4" value="copy"> Only copy changes<br>
+  <input type="radio" name="q4" value="size"> Depends on size<br>
+  <input type="radio" name="q4" value="error"> Error occurs<br>
 
   <!-- Q5 -->
   <h2>Q5</h2>
-  <p>
-    Given array <code>[2,4,6,8,10]</code>, how would you check if a number exists?
-  </p>
-  <input type="radio" name="q5" value="loop">Loop and compare each element<br>
-  <input type="radio" name="q5" value="middle">Check middle element only<br>
-  <input type="radio" name="q5" value="recursion">Use recursion only<br>
-  <input type="radio" name="q5" value="sort">Sort again first<br>
+  <p>How would you check if a number exists in array <code>[2,4,6,8,10]</code>?</p>
+  <input type="radio" name="q5" value="loop"> Loop through and compare<br>
+  <input type="radio" name="q5" value="middle"> Check middle element only<br>
+  <input type="radio" name="q5" value="recursion"> Use recursion only<br>
+  <input type="radio" name="q5" value="sort"> Sort again first<br>
 
   <!-- Q6 -->
   <h2>Q6</h2>
   <p>Arrays are NOT well-suited for:</p>
-  <input type="radio" name="q6" value="fixed">Fixed-size data storage<br>
-  <input type="radio" name="q6" value="iteration">Iteration<br>
-  <input type="radio" name="q6" value="middle">Frequent insertions in middle<br>
-  <input type="radio" name="q6" value="index">Index access<br>
+  <input type="radio" name="q6" value="fixed"> Fixed-size data<br>
+  <input type="radio" name="q6" value="iteration"> Iteration<br>
+  <input type="radio" name="q6" value="middle"> Frequent middle insertions<br>
+  <input type="radio" name="q6" value="index"> Index access<br>
 
   <!-- Q7 -->
   <h2>Q7</h2>
-  <p>How would you find the largest element in an array?</p>
+  <p>
+    How would you find the largest element in an array?<br>
+    <small>(Short explanation is enough. No syntax needed.)</small>
+  </p>
   <textarea id="q7" rows="4"></textarea>
 
   <!-- Q8 -->
   <h2>Q8</h2>
-  <p>How would you check whether an array is sorted?</p>
+  <p>
+    How would you check whether an array is sorted?<br>
+    <small>(Explain in simple words.)</small>
+  </p>
   <textarea id="q8" rows="4"></textarea>
 
   <!-- Q9 -->
   <h2>Q9</h2>
   <p>
-    You see the problem: “Find two numbers in an array whose sum is X.”
-    What do you do first?
+    You see the problem: “Find two numbers whose sum is X.” What do you do first?
   </p>
-  <input type="radio" name="q9" value="code">Start coding immediately<br>
-  <input type="radio" name="q9" value="bruteforce">Think of a brute-force solution<br>
-  <input type="radio" name="q9" value="formula">Look for a formula/pattern<br>
-  <input type="radio" name="q9" value="skip">Skip the question<br>
+  <input type="radio" name="q9" value="code"> Start coding immediately<br>
+  <input type="radio" name="q9" value="bruteforce"> Think brute-force solution<br>
+  <input type="radio" name="q9" value="formula"> Look for a pattern/formula<br>
+  <input type="radio" name="q9" value="skip"> Skip the problem<br>
 
   <!-- Q10 -->
   <h2>Q10</h2>
-  <p>If you are unsure about your solution, what do you do next?</p>
-  <input type="radio" name="q10" value="submit">Submit anyway<br>
-  <input type="radio" name="q10" value="example">Test with a small example<br>
-  <input type="radio" name="q10" value="method">Try a different method<br>
-  <input type="radio" name="q10" value="stop">Stop working on it<br>
+  <p>If you are unsure about your solution, what do you do?</p>
+  <input type="radio" name="q10" value="submit"> Submit anyway<br>
+  <input type="radio" name="q10" value="example"> Test with a small example<br>
+  <input type="radio" name="q10" value="method"> Try another approach<br>
+  <input type="radio" name="q10" value="stop"> Stop working<br>
+
+  <!-- Prajman Output -->
+  <div id="prajman-output"></div>
 
   <button onclick="submitData()">Submit</button>
 </div>
@@ -131,68 +150,58 @@
     const q7 = document.getElementById("q7").value.trim();
     const q8 = document.getElementById("q8").value.trim();
 
-    // ---- PRAJMAN RULE ENGINE v1 ----
-
     let prajmanMessage = "";
 
-    // Rule A: Foundational Gap
+    // Rule A — Foundational Gap
     if (answers.q1 !== "3" || answers.q2 !== "runtime") {
       prajmanMessage = `
         <h3>Prajman</h3>
         <p><strong>Observation</strong><br>
-        Some of the basic questions took extra effort or led to confusion.</p>
+        Some of the basic questions caused confusion.</p>
         <p><strong>What this means</strong><br>
-        This usually happens when fundamentals haven’t fully settled yet — it’s normal and fixable.</p>
+        Fundamentals are not fully settled yet — which is normal and fixable.</p>
         <p><strong>Next step</strong><br>
-        Start with one focused practice on array indexing and boundaries.
-        Just 10 minutes is enough for now.</p>
+        Practice array indexing and boundary cases for 10 minutes.</p>
       `;
     }
-
-    // Rule B: Overconfidence
-    else if (timeSpentSec < 180 && Object.keys(answers).length < 5) {
+    // Rule B — Overconfidence
+    else if (timeSpentSec < 180) {
       prajmanMessage = `
         <h3>Prajman</h3>
         <p><strong>Observation</strong><br>
-        You moved quickly, but a few small details were missed.</p>
+        You moved quickly, but missed some details.</p>
         <p><strong>What this means</strong><br>
-        Speed works best when basics are automatic.</p>
+        Speed is effective only when basics are automatic.</p>
         <p><strong>Next step</strong><br>
-        Slow down briefly and practice one boundary-based array example.</p>
+        Slow down and practice one boundary-based array example.</p>
       `;
     }
-
-    // Rule C: Hesitation / Avoidance
+    // Rule C — Hesitation / Avoidance
     else if (timeSpentSec > 600 || (q7 === "" && q8 === "")) {
       prajmanMessage = `
         <h3>Prajman</h3>
         <p><strong>Observation</strong><br>
-        Some questions were left open or avoided.</p>
+        Some questions were avoided or left open.</p>
         <p><strong>What this means</strong><br>
-        This usually signals uncertainty, not inability.</p>
+        This signals uncertainty, not inability.</p>
         <p><strong>Next step</strong><br>
-        Try explaining array logic in plain words using one small example.</p>
+        Explain array logic in your own words using one small example.</p>
       `;
     }
-
-    // Default fallback
     else {
       prajmanMessage = `
         <h3>Prajman</h3>
         <p><strong>Observation</strong><br>
-        Your responses show steady engagement.</p>
+        Your engagement was steady.</p>
         <p><strong>Next step</strong><br>
-        Continue with one short array practice to strengthen consistency.</p>
+        Continue with short array practice to build consistency.</p>
       `;
     }
 
-    document.querySelector(".container").innerHTML = prajmanMessage;
+    document.getElementById("prajman-output").innerHTML = prajmanMessage;
+    window.scrollTo(0, document.body.scrollHeight);
   }
 </script>
 
-
 </body>
 </html>
-
-
-
