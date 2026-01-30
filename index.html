@@ -118,9 +118,16 @@
 </div>
 
 <script>
+  <script>
   const startTime = Date.now();
 
   function submitData() {
+
+    if (typeof window.localStorage === "undefined") {
+      alert("Storage not supported in this browser.");
+      return;
+    }
+
     const data = {
       q7: document.getElementById("q7").value,
       q8: document.getElementById("q8").value,
@@ -131,13 +138,14 @@
     const radios = document.querySelectorAll("input[type=radio]:checked");
     radios.forEach(r => data[r.name] = r.value);
 
-    let responses = JSON.parse(localStorage.getItem("edutwain_scanner")) || [];
+    let responses = JSON.parse(window.localStorage.getItem("edutwain_scanner")) || [];
     responses.push(data);
-    localStorage.setItem("edutwain_scanner", JSON.stringify(responses));
+    window.localStorage.setItem("edutwain_scanner", JSON.stringify(responses));
 
-    alert("Response saved. Thank you.");
+    alert("Response saved successfully.");
   }
 </script>
 
 </body>
 </html>
+
