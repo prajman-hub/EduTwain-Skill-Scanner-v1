@@ -1,211 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>EduTwain – Skill Scanner v1</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduTwain</title>
+
   <style>
+    /* ----- GLOBAL RESET ----- */
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f7f7f7;
+      color: #222;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 420px;
+      margin: auto;
       padding: 20px;
     }
-    .container {
-      max-width: 900px;
-      background: #ffffff;
-      margin: auto;
-      padding: 30px;
-      border-radius: 8px;
-    }
+
     h1 {
-      text-align: center;
+      font-size: 24px;
+      margin-bottom: 12px;
     }
-    h2 {
-      margin-top: 35px;
+
+    p {
+      font-size: 16px;
+      margin-bottom: 16px;
     }
-    textarea {
-      width: 100%;
+
+    label {
+      display: block;
+      margin-bottom: 6px;
       font-size: 14px;
     }
-    button {
-      margin-top: 30px;
-      padding: 12px 24px;
+
+    input[type="text"],
+    input[type="number"],
+    textarea {
+      width: 100%;
+      padding: 12px;
       font-size: 16px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      background: #222;
+      color: #fff;
       cursor: pointer;
     }
-    #prajman-output {
-      margin-top: 40px;
+
+    button:disabled {
+      background: #999;
+      cursor: not-allowed;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .question {
+      margin-bottom: 32px;
+    }
+
+    .radio-option {
+      margin-bottom: 8px;
+    }
+
+    .radio-option input {
+      margin-right: 8px;
+    }
+
+    .helper-text {
+      font-size: 13px;
+      color: #555;
+      margin-top: -10px;
+      margin-bottom: 16px;
+    }
+
+    .prajman-box {
+      margin-top: 32px;
       padding: 20px;
-      border-left: 4px solid #333;
-      background: #fafafa;
+      background: #ffffff;
+      border-left: 4px solid #222;
+    }
+
+    .prajman-box h2 {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .prajman-box p {
+      margin-bottom: 12px;
     }
   </style>
 </head>
+
 <body>
-<div style="background:yellow; padding:10px;">
-  VERSION: PRAJMAN v1 FINAL
-</div>
-<div class="container">
-  <h1>EduTwain – Skill Scanner</h1>
-  <p style="text-align:center;">
-    No grading. No judgment. Just understanding how you think.
-  </p>
 
-  <!-- Q1 -->
-  <h2>Q1</h2>
-  <p><code>int arr[] = {1,2,3,4}; print(arr[2]);</code><br>What will be printed?</p>
-  <input type="radio" name="q1" value="1"> 1<br>
-  <input type="radio" name="q1" value="2"> 2<br>
-  <input type="radio" name="q1" value="3"> 3<br>
-  <input type="radio" name="q1" value="4"> 4<br>
+  <div class="container">
 
-  <!-- Q2 -->
-  <h2>Q2</h2>
-  <p>What happens if you access <code>arr[4]</code>?</p>
-  <input type="radio" name="q2" value="prints"> It prints a value<br>
-  <input type="radio" name="q2" value="zero"> It prints 0<br>
-  <input type="radio" name="q2" value="compile"> Compile-time error<br>
-  <input type="radio" name="q2" value="runtime"> Runtime error<br>
+    <!-- STEP 0 — NAME & AGE -->
+    <section id="step-0">
+      <h1>EduTwain</h1>
+      <p>Understand how you think and grow.</p>
 
-  <!-- Q3 -->
-  <h2>Q3</h2>
-  <p>Which operation is generally fastest on an array?</p>
-  <input type="radio" name="q3" value="index"> Access by index<br>
-  <input type="radio" name="q3" value="search"> Search for an element<br>
-  <input type="radio" name="q3" value="insert"> Insert in the middle<br>
-  <input type="radio" name="q3" value="remove"> Remove from the beginning<br>
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Your name" />
 
-  <!-- Q4 -->
-  <h2>Q4</h2>
-  <p>If an array is modified inside a function, what happens?</p>
-  <input type="radio" name="q4" value="changes"> Original array changes<br>
-  <input type="radio" name="q4" value="copy"> Only copy changes<br>
-  <input type="radio" name="q4" value="size"> Depends on size<br>
-  <input type="radio" name="q4" value="error"> Error occurs<br>
+      <label for="age">Age</label>
+      <input type="number" id="age" placeholder="Your age" />
 
-  <!-- Q5 -->
-  <h2>Q5</h2>
-  <p>How would you check if a number exists in array <code>[2,4,6,8,10]</code>?</p>
-  <input type="radio" name="q5" value="loop"> Loop through and compare<br>
-  <input type="radio" name="q5" value="middle"> Check middle element only<br>
-  <input type="radio" name="q5" value="recursion"> Use recursion only<br>
-  <input type="radio" name="q5" value="sort"> Sort again first<br>
+      <p class="helper-text">We don’t collect anything else.</p>
 
-  <!-- Q6 -->
-  <h2>Q6</h2>
-  <p>Arrays are NOT well-suited for:</p>
-  <input type="radio" name="q6" value="fixed"> Fixed-size data<br>
-  <input type="radio" name="q6" value="iteration"> Iteration<br>
-  <input type="radio" name="q6" value="middle"> Frequent middle insertions<br>
-  <input type="radio" name="q6" value="index"> Index access<br>
+      <button id="startBtn">Start</button>
+    </section>
 
-  <!-- Q7 -->
-  <h2>Q7</h2>
-  <p>
-    How would you find the largest element in an array?<br>
-    <small>(Short explanation is enough. No syntax needed.)</small>
-  </p>
-  <textarea id="q7" rows="4"></textarea>
+    <!-- STEP 1 — REASSURANCE -->
+    <section id="step-1" class="hidden">
+      <p>This is not a test.</p>
+      <p>There’s no score and no judgment.</p>
+      <p>Short answers are enough. Try honestly.</p>
 
-  <!-- Q8 -->
-  <h2>Q8</h2>
-  <p>
-    How would you check whether an array is sorted?<br>
-    <small>(Explain in simple words.)</small>
-  </p>
-  <textarea id="q8" rows="4"></textarea>
+      <button id="continueBtn">Continue</button>
+    </section>
 
-  <!-- Q9 -->
-  <h2>Q9</h2>
-  <p>
-    You see the problem: “Find two numbers whose sum is X.” What do you do first?
-  </p>
-  <input type="radio" name="q9" value="code"> Start coding immediately<br>
-  <input type="radio" name="q9" value="bruteforce"> Think brute-force solution<br>
-  <input type="radio" name="q9" value="formula"> Look for a pattern/formula<br>
-  <input type="radio" name="q9" value="skip"> Skip the problem<br>
+    <!-- STEP 2 — SCANNER -->
+    <section id="step-2" class="hidden">
+      <div class="question">
+        <p><strong>Q1.</strong> What will be printed?</p>
+        <p><code>arr = [1,2,3,4]; print(arr[2])</code></p>
 
-  <!-- Q10 -->
-  <h2>Q10</h2>
-  <p>If you are unsure about your solution, what do you do?</p>
-  <input type="radio" name="q10" value="submit"> Submit anyway<br>
-  <input type="radio" name="q10" value="example"> Test with a small example<br>
-  <input type="radio" name="q10" value="method"> Try another approach<br>
-  <input type="radio" name="q10" value="stop"> Stop working<br>
+        <div class="radio-option"><input type="radio" name="q1" value="1">1</div>
+        <div class="radio-option"><input type="radio" name="q1" value="2">2</div>
+        <div class="radio-option"><input type="radio" name="q1" value="3">3</div>
+        <div class="radio-option"><input type="radio" name="q1" value="4">4</div>
+      </div>
 
-  <!-- Prajman Output -->
-  <div id="prajman-output"></div>
+      <!-- QUESTIONS Q2–Q10 WILL BE ADDED HERE (same pattern) -->
 
-  <button onclick="submitData()">Submit</button>
-</div>
+      <button id="finishBtn">Finish</button>
+    </section>
 
-<script>
-  const startTime = Date.now();
+    <!-- STEP 3 — PRAJMAN -->
+    <section id="step-3" class="hidden">
+      <div class="prajman-box">
+        <h2 id="prajman-title"></h2>
 
-  function submitData() {
-    const timeSpentSec = Math.floor((Date.now() - startTime) / 1000);
+        <p><strong>Observation</strong><br>
+        Some questions took longer, especially when things were unclear.</p>
 
-    const answers = {};
-    document.querySelectorAll("input[type=radio]:checked").forEach(r => {
-      answers[r.name] = r.value;
+        <p><strong>What this means</strong><br>
+        This usually means the foundation is still settling.</p>
+
+        <p><strong>Next step</strong><br>
+        Spend 10 minutes practicing one simple case. Nothing more.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    const state = {
+      step: 0,
+      name: "",
+      age: "",
+      startTime: null,
+      answers: {}
+    };
+
+    function showStep(step) {
+      for (let i = 0; i <= 3; i++) {
+        document.getElementById("step-" + i).classList.add("hidden");
+      }
+      document.getElementById("step-" + step).classList.remove("hidden");
+      state.step = step;
+    }
+
+    document.getElementById("startBtn").addEventListener("click", () => {
+      const name = document.getElementById("name").value.trim();
+      const age = document.getElementById("age").value.trim();
+
+      if (!name || !age) return;
+
+      state.name = name;
+      state.age = age;
+      showStep(1);
     });
 
-    const q7 = document.getElementById("q7").value.trim();
-    const q8 = document.getElementById("q8").value.trim();
+    document.getElementById("continueBtn").addEventListener("click", () => {
+      state.startTime = Date.now();
+      showStep(2);
+    });
 
-    let prajmanMessage = "";
+    document.getElementById("finishBtn").addEventListener("click", () => {
+      const timeSpentSeconds = Math.floor((Date.now() - state.startTime) / 1000);
 
-    // Rule A — Foundational Gap
-    if (answers.q1 !== "3" || answers.q2 !== "runtime") {
-      prajmanMessage = `
-        <h3>Prajman</h3>
-        <p><strong>Observation</strong><br>
-        Some of the basic questions caused confusion.</p>
-        <p><strong>What this means</strong><br>
-        Fundamentals are not fully settled yet — which is normal and fixable.</p>
-        <p><strong>Next step</strong><br>
-        Practice array indexing and boundary cases for 10 minutes.</p>
-      `;
-    }
-    // Rule B — Overconfidence
-    else if (timeSpentSec < 180) {
-      prajmanMessage = `
-        <h3>Prajman</h3>
-        <p><strong>Observation</strong><br>
-        You moved quickly, but missed some details.</p>
-        <p><strong>What this means</strong><br>
-        Speed is effective only when basics are automatic.</p>
-        <p><strong>Next step</strong><br>
-        Slow down and practice one boundary-based array example.</p>
-      `;
-    }
-    // Rule C — Hesitation / Avoidance
-    else if (timeSpentSec > 600 || (q7 === "" && q8 === "")) {
-      prajmanMessage = `
-        <h3>Prajman</h3>
-        <p><strong>Observation</strong><br>
-        Some questions were avoided or left open.</p>
-        <p><strong>What this means</strong><br>
-        This signals uncertainty, not inability.</p>
-        <p><strong>Next step</strong><br>
-        Explain array logic in your own words using one small example.</p>
-      `;
-    }
-    else {
-      prajmanMessage = `
-        <h3>Prajman</h3>
-        <p><strong>Observation</strong><br>
-        Your engagement was steady.</p>
-        <p><strong>Next step</strong><br>
-        Continue with short array practice to build consistency.</p>
-      `;
-    }
+      document.getElementById("prajman-title").innerText =
+        "Prajman for " + state.name;
 
-    document.getElementById("prajman-output").innerHTML = prajmanMessage;
-    window.scrollTo(0, document.body.scrollHeight);
-  }
-</script>
+      showStep(3);
+      window.scrollTo(0, 0);
+    });
+  </script>
 
 </body>
 </html>
-
-
